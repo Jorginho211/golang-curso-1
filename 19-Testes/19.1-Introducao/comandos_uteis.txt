@@ -1,0 +1,5 @@
+go test -v # Para ter verbose
+go test --cover # Indica a % de cobertura do codigo testado
+go test --coverprofile cobertura.txt # Gera o arquivo cobertura.txt coa informaçao da cobertura
+go tool cover --func=cobertura.txt # Le o arquivo para indicar a cobertura da funçao
+go tool cover --html=cobertura.txt # Gera o html indicando graficamente os lugares do codigo onde passa o test
