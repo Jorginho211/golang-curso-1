@@ -1,6 +1,7 @@
 package config
 
 import (
+	"encoding/base64"
 	"fmt"
 	"log"
 	"os"
@@ -15,6 +16,9 @@ var (
 
 	// Porta onde a API vai estar rodando
 	Porta = 0
+
+	// Chave para gerar o token
+	SecretKey []byte
 )
 
 // Carregar vai inicializar as variaveis de ambiente
@@ -35,4 +39,9 @@ func Carregar() {
 		os.Getenv("DB_SENHA"),
 		os.Getenv("DB_NOME"),
 	)
+
+	SecretKey, erro = base64.StdEncoding.DecodeString(os.Getenv("SECRET_KEY"))
+	if erro != nil {
+		log.Fatal(erro)
+	}
 }
