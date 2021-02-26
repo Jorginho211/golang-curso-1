@@ -10,3 +10,9 @@ values
 (1, 2), -- Usuario 2 segue ao usuario 1
 (3, 1), -- Usuario 1 segue ao usuario 3
 (1, 3); -- Usuario 3 segue ao usuario 1
+
+INSERT INTO publicacoes (titulo, conteudo, autor_id)
+values
+("Publicaçao do Usuario 1", "Essa é a publicaçao do usuario 1!", 1),
+("Publicaçao do Usuario 2", "Essa é a publicaçao do usuario 2!", 2),
+("Publicaçao do Usuario 3", "Essa é a publicaçao do usuario 3!", 3);
