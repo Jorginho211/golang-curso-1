@@ -187,3 +187,32 @@ func (repositorio publicacoes) Curtir(publicacaoId uint64) error {
 
 	return nil
 }
+
+// Descurtir substrai uma curtida na publicacao
+func (repositorio publicacoes) Descurtir(publicacaoId uint64) error {
+	statement, erro := repositorio.db.Prepare(`
+		update publicacoes set curtidas = curtidas - 1
+		where curtidas >= 1 AND id = ?
+	`)
+
+	// Opçao alternativa com o CASE
+	// statement, erro := repositorio.db.Prepare(`
+	// 	update publicacoes set curtidas =
+	// 	CASE
+	// 		WHEN curitdas > 0 THEN curtidas - 1
+	// 		ELSE 0
+	// 	END
+	// 	where id = ?
+	// `)
+
+	if erro != nil {
+		return erro
+	}
+	defer statement.Close()
+
+	if _, erro = statement.Exec(publicacaoId); erro != nil {
+		return erro
+	}
+
+	return nil
+}
