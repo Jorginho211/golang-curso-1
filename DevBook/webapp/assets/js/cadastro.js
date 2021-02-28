@@ -8,13 +8,13 @@ function criarUsuario(evento) {
         return;
     }
 
-    $.akax({
+    $.ajax({
         url: "/usuarios",
         method: 'POST',
         data: {
             nome: $('#nome').val(),
-            nome: $('#email').val(),
-            nome: $('#nick').val(),
+            email: $('#email').val(),
+            nick: $('#nick').val(),
             senha: $('#senha').val()
         }
     })
