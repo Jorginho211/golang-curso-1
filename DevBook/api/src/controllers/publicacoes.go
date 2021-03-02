@@ -81,7 +81,7 @@ func BuscarPublicacoes(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	respostas.JSON(w, http.StatusCreated, publicacoes)
+	respostas.JSON(w, http.StatusOK, publicacoes)
 }
 
 // BuscarPublicacao traz uma unica publicacao
