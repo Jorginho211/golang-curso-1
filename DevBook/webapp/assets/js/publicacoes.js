@@ -71,8 +71,30 @@ function descurtirPublicacao(evento) {
     });
 }
 
+function atualizarPublicacao() {
+    $(this).prop('disabled', true);
+
+    const publicacaoId = $(this).data('publicacao-id');
+
+    $.ajax({
+        url: `/publicacoes/${publicacaoId}`,
+        method: "PUT",
+        data: {
+            titulo: $('#titulo').val(),
+            conteudo: $('#conteudo').val()
+        }
+    }).done(function() {
+        alert("Publicaçao editada com sucesso!");
+    }).fail(function() {
+        alert("Erro ao editar a publicaçao!");
+    }).always(function() {
+        $('#atualizar-publicacao').prop('disabled', false);
+    });
+}
+
 $(document).ready(function() {
     $('#nova-publicacao').on('submit', criarPublicacao);
     $(document).on('click', '.curtir-publicacao', curtirPublicacao);
     $(document).on('click', '.descurtir-publicacao', descurtirPublicacao);
+    $('#atualizar-publicacao').on('click', atualizarPublicacao);
 });
