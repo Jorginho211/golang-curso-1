@@ -18,7 +18,10 @@ function criarPublicacao(evento) {
 function curtirPublicacao(evento) {
     evento.preventDefault();
 
-    const elementoClicado = $(evento.target);
+    let elementoClicado = $(evento.target);
+    if (!evento.target.classList.contains('curtir-publicacao')) {
+        elementoClicado = elementoClicado.parent()
+    }
     const publicacaoId = elementoClicado.closest('div').data('publicacao-id');
 
     elementoClicado.prop('disabled', true);
@@ -26,12 +29,13 @@ function curtirPublicacao(evento) {
         url: `/publicacoes/${publicacaoId}/curtir`,
         method: "GET",
     }).done(function() {
-        let contadorDeCurtidas = elementoClicado.next('span');
-        if (contadorDeCurtidas.length === 0)
-            contadorDeCurtidas = elementoClicado.parent().next('span');
-
+        const contadorDeCurtidas = elementoClicado.next('span');
         const quantidadeDeCurtidas = parseInt(contadorDeCurtidas.text());
         contadorDeCurtidas.text(quantidadeDeCurtidas + 1);
+
+        elementoClicado.addClass('descurtir-publicacao');
+        elementoClicado.addClass('text-danger');
+        elementoClicado.removeClass('curtir-publicacao');
     }).fail(function() {
         alert("Erro ao curtir publicaçao");
     }).always(function () {
@@ -39,7 +43,36 @@ function curtirPublicacao(evento) {
     });
 }
 
+function descurtirPublicacao(evento) {
+    evento.preventDefault();
+
+    let elementoClicado = $(evento.target);
+    if (!evento.target.classList.contains('descurtir-publicacao')) {
+        elementoClicado = elementoClicado.parent()
+    }
+    const publicacaoId = elementoClicado.closest('div').data('publicacao-id');
+
+    elementoClicado.prop('disabled', true);
+    $.ajax({
+        url: `/publicacoes/${publicacaoId}/descurtir`,
+        method: "GET",
+    }).done(function() {
+        const contadorDeCurtidas = elementoClicado.next('span');
+        const quantidadeDeCurtidas = parseInt(contadorDeCurtidas.text());
+        contadorDeCurtidas.text(quantidadeDeCurtidas - 1);
+
+        elementoClicado.addClass('curtir-publicacao');
+        elementoClicado.removeClass('text-danger');
+        elementoClicado.removeClass('descurtir-publicacao');
+    }).fail(function() {
+        alert("Erro ao descurtir publicaçao");
+    }).always(function () {
+        elementoClicado.prop('disabled', false);
+    });
+}
+
 $(document).ready(function() {
     $('#nova-publicacao').on('submit', criarPublicacao);
-    $('.curtir-publicacao').on('click', curtirPublicacao);
+    $(document).on('click', '.curtir-publicacao', curtirPublicacao);
+    $(document).on('click', '.descurtir-publicacao', descurtirPublicacao);
 });
