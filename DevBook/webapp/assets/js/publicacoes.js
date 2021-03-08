@@ -92,9 +92,35 @@ function atualizarPublicacao() {
     });
 }
 
+function deletarPublicacao(evento) {
+    evento.preventDefault();
+
+    let elementoClicado = $(evento.target);
+    if (!evento.target.classList.contains('deletar-publicacao')) {
+        elementoClicado = elementoClicado.parent()
+    }
+    const publicacao = elementoClicado.closest('div');
+    const publicacaoId = publicacao.data('publicacao-id');
+
+    elementoClicado.prop('disabled', true);
+    $.ajax({
+        url: `/publicacoes/${publicacaoId}`,
+        method: "DELETE"
+    }).done(function() {
+        publicacao.fadeOut("slow", function() {
+            $(this).remove();
+        });
+    }).fail(function() {
+        alert("Erro ao excluir a publicaçao");
+    }).always(function() {
+        elementoClicado.prop('disabled', false);
+    });
+}
+
 $(document).ready(function() {
     $('#nova-publicacao').on('submit', criarPublicacao);
     $(document).on('click', '.curtir-publicacao', curtirPublicacao);
     $(document).on('click', '.descurtir-publicacao', descurtirPublicacao);
     $('#atualizar-publicacao').on('click', atualizarPublicacao);
+    $('.deletar-publicacao').on('click', deletarPublicacao);
 });
