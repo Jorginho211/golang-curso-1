@@ -11,7 +11,7 @@ function criarPublicacao(evento) {
     }).done(function() {
         window.location = "/home";
     }).fail(function() {
-        alert("Erro ao criar a publicaçao");
+        Swal.fire("Ops...", "Erro ao criar a publicaçao!", "error");
     })
 }
 
@@ -37,7 +37,7 @@ function curtirPublicacao(evento) {
         elementoClicado.addClass('text-danger');
         elementoClicado.removeClass('curtir-publicacao');
     }).fail(function() {
-        alert("Erro ao curtir publicaçao");
+        Swal.fire("Ops...", "Erro ao curtir publicaçao!", "error");
     }).always(function () {
         elementoClicado.prop('disabled', false);
     });
@@ -65,7 +65,7 @@ function descurtirPublicacao(evento) {
         elementoClicado.removeClass('text-danger');
         elementoClicado.removeClass('descurtir-publicacao');
     }).fail(function() {
-        alert("Erro ao descurtir publicaçao");
+        Swal.fire("Ops...", "Erro ao descurtir publicaçao!", "error");
     }).always(function () {
         elementoClicado.prop('disabled', false);
     });
@@ -84,9 +84,12 @@ function atualizarPublicacao() {
             conteudo: $('#conteudo').val()
         }
     }).done(function() {
-        alert("Publicaçao editada com sucesso!");
+        Swal.fire('Sucesso', 'Publicaçao editada com sucesso!', 'success')
+            .then(function() {
+                window.location = "/home";
+            });
     }).fail(function() {
-        alert("Erro ao editar a publicaçao!");
+        Swal.fire("Ops...", "Erro ao editar a publicaçao!", "error");
     }).always(function() {
         $('#atualizar-publicacao').prop('disabled', false);
     });
@@ -95,25 +98,35 @@ function atualizarPublicacao() {
 function deletarPublicacao(evento) {
     evento.preventDefault();
 
-    let elementoClicado = $(evento.target);
-    if (!evento.target.classList.contains('deletar-publicacao')) {
-        elementoClicado = elementoClicado.parent()
-    }
-    const publicacao = elementoClicado.closest('div');
-    const publicacaoId = publicacao.data('publicacao-id');
+    Swal.fire({
+        title: "Atençao!",
+        text: "Tem certeza que deseja excluir essa publicaçao? Essa açao é irreversível!",
+        showCancelButton: true,
+        cancelButtonText: "Cancelar",
+        icon: "warning"
+    }).then(function(confirmacao) {
+        if (!confirmacao.value) return;
 
-    elementoClicado.prop('disabled', true);
-    $.ajax({
-        url: `/publicacoes/${publicacaoId}`,
-        method: "DELETE"
-    }).done(function() {
-        publicacao.fadeOut("slow", function() {
-            $(this).remove();
+        let elementoClicado = $(evento.target);
+        if (!evento.target.classList.contains('deletar-publicacao')) {
+            elementoClicado = elementoClicado.parent()
+        }
+        const publicacao = elementoClicado.closest('div');
+        const publicacaoId = publicacao.data('publicacao-id');
+
+        elementoClicado.prop('disabled', true);
+        $.ajax({
+            url: `/publicacoes/${publicacaoId}`,
+            method: "DELETE"
+        }).done(function() {
+            publicacao.fadeOut("slow", function() {
+                $(this).remove();
+            });
+        }).fail(function() {
+            Swal.fire("Ops...", "Erro ao excluir a publicaçao!", "error");
+        }).always(function() {
+            elementoClicado.prop('disabled', false);
         });
-    }).fail(function() {
-        alert("Erro ao excluir a publicaçao");
-    }).always(function() {
-        elementoClicado.prop('disabled', false);
     });
 }
 
