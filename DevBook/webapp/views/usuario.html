@@ -40,12 +40,12 @@
 
                         <a href="#">
                             {{ if $SeguidoPeloUsuarioLogado }}
-                                <button class="btn btn-info" id="parar-seguir" data-usuario-id="{{ .Usuario.ID }}">
+                                <button class="btn btn-info" id="parar-de-seguir" data-usuario-id="{{ .Usuario.ID }}">
                                     Parar de Seguir
                                 </button>
                             {{ else }}
-                                <button class="btn btn-info" id="parar-seguir" data-usuario-id="{{ .Usuario.ID }}">
-                                    Parar de Seguir
+                                <button class="btn btn-info" id="seguir" data-usuario-id="{{ .Usuario.ID }}">
+                                    Seguir
                                 </button>
                             {{ end }}
                         </a>
@@ -78,5 +78,6 @@
     {{ template "scripts" }}
 
     <script src="/assets/js/publicacoes.js"></script>
+    <script src="/assets/js/usuario.js"></script>
 </body>
 </html>
