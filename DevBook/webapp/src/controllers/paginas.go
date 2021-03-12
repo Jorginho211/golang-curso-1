@@ -184,3 +184,8 @@ func CarregarPaginaDeEdicaoDeUsuario(w http.ResponseWriter, r *http.Request) {
 
 	utils.ExecutarTemplate(w, "editar-usuario.html", usuario)
 }
+
+// CarregarPaginaDeAtualizacaoDeSenha carrega a pagina para a atualizaçao da senha do usuario
+func CarregarPaginaDeAtualizacaoDeSenha(w http.ResponseWriter, r *http.Request) {
+	utils.ExecutarTemplate(w, "atualizar-senha.html", nil)
+}
