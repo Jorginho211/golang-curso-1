@@ -1,0 +1,552 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Curso Golang",
+		"_postman_id": "2efa7eea-47b0-f718-8bbb-8af77592f910",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CRUD",
+			"description": "",
+			"item": [
+				{
+					"name": "Inserir Usuario",
+					"request": {
+						"url": "localhost:5000/usuarios",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Joao\",\n\t\"email\": \"joao.pedro@gmail.com\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Procurar Usuarios",
+					"request": {
+						"url": "localhost:5000/usuarios",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Procurar um usuario",
+					"request": {
+						"url": "localhost:5000/usuario/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar um usuario",
+					"request": {
+						"url": "localhost:5000/usuario/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"nome\":\"Leonardo\",\"email\":\"leonardo@gmail.com\"}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar um Usuario",
+					"request": {
+						"url": "localhost:5000/usuario/1",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DevBook",
+			"description": "",
+			"item": [
+				{
+					"name": "Usuarios",
+					"description": "",
+					"item": [
+						{
+							"name": "Inserir Usuario",
+							"request": {
+								"url": "localhost:5000/usuarios",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nome\": \"usuario1\",\n\t\"nick\": \"usuario01\",\n\t\"email\": \"usuario@gmail.com\",\n\t\"senha\": \"123456\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Seguir Usuario",
+							"request": {
+								"url": "localhost:5000/usuarios/2/seguir",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRvcml6ZWQiOnRydWUsImV4cCI6MTYxNDEyNzIzMiwidXN1YXJpb0lkIjoxfQ.1KGWnbvk3WrWg8af5m2FKurFX0fPFx8oiKw2jMzk7s4",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nome\": \"usuario1\",\n\t\"nick\": \"usuario01\",\n\t\"email\": \"usuario@gmail.com\",\n\t\"senha\": \"123456\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar Senha",
+							"request": {
+								"url": "localhost:5000/usuarios/2/seguir",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRvcml6ZWQiOnRydWUsImV4cCI6MTYxNDEyNzIzMiwidXN1YXJpb0lkIjoxfQ.1KGWnbvk3WrWg8af5m2FKurFX0fPFx8oiKw2jMzk7s4",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nome\": \"usuario1\",\n\t\"nick\": \"usuario01\",\n\t\"email\": \"usuario@gmail.com\",\n\t\"senha\": \"123456\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Prcurar seguidores dum usuario",
+							"request": {
+								"url": "localhost:5000/usuarios/3/seguidores",
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRvcml6ZWQiOnRydWUsImV4cCI6MTYxNDEyNzIzMiwidXN1YXJpb0lkIjoxfQ.1KGWnbvk3WrWg8af5m2FKurFX0fPFx8oiKw2jMzk7s4",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nome\": \"usuario1\",\n\t\"nick\": \"usuario01\",\n\t\"email\": \"usuario@gmail.com\",\n\t\"senha\": \"123456\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Prcurar usuarios que esta seguindo",
+							"request": {
+								"url": "localhost:5000/usuarios/3/seguindo",
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRvcml6ZWQiOnRydWUsImV4cCI6MTYxNDEyNzIzMiwidXN1YXJpb0lkIjoxfQ.1KGWnbvk3WrWg8af5m2FKurFX0fPFx8oiKw2jMzk7s4",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nome\": \"usuario1\",\n\t\"nick\": \"usuario01\",\n\t\"email\": \"usuario@gmail.com\",\n\t\"senha\": \"123456\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Parar de seguir Usuario",
+							"request": {
+								"url": "localhost:5000/usuarios/2/parar-de-seguir",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRvcml6ZWQiOnRydWUsImV4cCI6MTYxNDEyNzIzMiwidXN1YXJpb0lkIjoxfQ.1KGWnbvk3WrWg8af5m2FKurFX0fPFx8oiKw2jMzk7s4",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nome\": \"usuario1\",\n\t\"nick\": \"usuario01\",\n\t\"email\": \"usuario@gmail.com\",\n\t\"senha\": \"123456\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Procurar Usuarios",
+							"request": {
+								"url": {
+									"raw": "localhost:5000/usuarios?usuario=joao",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"usuarios"
+									],
+									"query": [
+										{
+											"key": "usuario",
+											"value": "joao",
+											"equals": true,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Procurar um usuario",
+							"request": {
+								"url": "localhost:5000/usuarios/3",
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRvcml6ZWQiOnRydWUsImV4cCI6MTYxNTQyMjI2MSwidXN1YXJpb0lkIjoxfQ.eUUIlGBqlVE8di9QYRRPicOy5iF5zGWV5BnNjgWcmNc",
+										"description": ""
+									}
+								],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar um usuario",
+							"request": {
+								"url": "localhost:5000/usuarios/1",
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"nome\":\"Leonardo\", \"nick\":\"leonardo\", \"email\":\"leonardo@gmail.com\"}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Deletar um Usuario",
+							"request": {
+								"url": "localhost:5000/usuarios/1",
+								"method": "DELETE",
+								"header": [],
+								"body": {},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"url": "localhost:5000/login",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"usuario1@gmail.com\",\n\t\"senha\": \"12345678\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Publicaçoes",
+					"description": "",
+					"item": [
+						{
+							"name": "Criar Publicacao",
+							"request": {
+								"url": "localhost:5000/publicacoes",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRvcml6ZWQiOnRydWUsImV4cCI6MTYxNDIxNDI1MywidXN1YXJpb0lkIjoxfQ.qmjqCkEL561dDcP0RXyxmOz1nZ0E5UGMxwZuC02iscY",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"titulo\": \"Minha segunda publicaçao\",\n\t\"conteudo\": \"Olá mundo! Minha segunda publicaçao\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Curtir Publicacao",
+							"request": {
+								"url": "localhost:5000/publicacoes/2/curtir",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRvcml6ZWQiOnRydWUsImV4cCI6MTYxNDQ3ODM5MCwidXN1YXJpb0lkIjoxfQ.4TIl_gKgJ0_1AuG5KaEfm_4PyRosVnZoPyxR9jzEfYo",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"titulo\": \"Minha segunda publicaçao\",\n\t\"conteudo\": \"Olá mundo! Minha segunda publicaçao\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Descurtir Publicacao",
+							"request": {
+								"url": "localhost:5000/publicacoes/2/curtir",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRvcml6ZWQiOnRydWUsImV4cCI6MTYxNDQ3ODM5MCwidXN1YXJpb0lkIjoxfQ.4TIl_gKgJ0_1AuG5KaEfm_4PyRosVnZoPyxR9jzEfYo",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"titulo\": \"Minha segunda publicaçao\",\n\t\"conteudo\": \"Olá mundo! Minha segunda publicaçao\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar Publicacao",
+							"request": {
+								"url": "localhost:5000/publicacoes/1",
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRvcml6ZWQiOnRydWUsImV4cCI6MTYxNDMwOTM4NywidXN1YXJpb0lkIjoxfQ.nHWSGheLontF8Pa80GV518whvxISwqAgG2fYcVks6VY",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"titulo\": \"Minha segunda publicaçao atualizada   \",\n\t\"conteudo\": \"Olá mundo! Minha segunda publicaçao atualizada  \"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Procurar publicacao por Id",
+							"request": {
+								"url": "localhost:5000/publicacoes/1",
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRvcml6ZWQiOnRydWUsImV4cCI6MTYxNDIxNDI1MywidXN1YXJpb0lkIjoxfQ.qmjqCkEL561dDcP0RXyxmOz1nZ0E5UGMxwZuC02iscY",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"titulo\": \"Minha segunda publicaçao\",\n\t\"conteudo\": \"Olá mundo! Minha segunda publicaçao\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Procurar publicacoes dum usuario",
+							"request": {
+								"url": "localhost:5000/usuarios/3/publicacoes",
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRvcml6ZWQiOnRydWUsImV4cCI6MTYxNDM4NTQyOSwidXN1YXJpb0lkIjoxfQ.XbJjU2kTWCSnY0xsTdNxhIhFypsr0fGyOLA8mikhfR0",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"titulo\": \"Minha segunda publicaçao\",\n\t\"conteudo\": \"Olá mundo! Minha segunda publicaçao\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Procurar publicacao dos seguidores e do proprio usuario",
+							"request": {
+								"url": "localhost:5000/publicacoes",
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRvcml6ZWQiOnRydWUsImV4cCI6MTYxNDI5NzYyNSwidXN1YXJpb0lkIjoxfQ.ftmr-jImhbh5X422o6hjT5XOD2PMUUSgQlZF-PnmX4U",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"titulo\": \"Minha segunda publicaçao\",\n\t\"conteudo\": \"Olá mundo! Minha segunda publicaçao\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Deletar publicacao",
+							"request": {
+								"url": "localhost:5000/publicacoes/1",
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRvcml6ZWQiOnRydWUsImV4cCI6MTYxNDIxNDI1MywidXN1YXJpb0lkIjoxfQ.qmjqCkEL561dDcP0RXyxmOz1nZ0E5UGMxwZuC02iscY",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	]
+}
